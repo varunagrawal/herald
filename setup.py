@@ -5,13 +5,13 @@ from setuptools import find_packages, setup
 from codecs import open
 from os import path
 import herald
+from pypandoc import convert
 
 dependencies = []
 
-here = path.abspath(path.dirname(__file__))
-# Get the long description from the README file
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = f.read()
+
+def read_md(f): return convert(f, 'rst')
+
 
 setup(
     name='herald',
@@ -21,7 +21,7 @@ setup(
     author=herald.__author__,
     author_email=herald.__email__,
     description='Command line tool to nuke a directory',
-    long_description=long_description,
+    long_description=read_md("README.md"),
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
     zip_safe=False,
