@@ -4,8 +4,3 @@ class Notifier:
 
     def notify(self):
         print(self.message)
-
-
-class GmailNotifier(Notifier):
-    def notify(self):
-        print(self.message)
