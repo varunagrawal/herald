@@ -1,6 +1,6 @@
 class Notifier:
-    def __init__(self, message):
-        self.message = message
+    def __init__(self):
+        pass
 
-    def notify(self):
-        print(self.message)
+    def notify(self, message):
+        print(message)

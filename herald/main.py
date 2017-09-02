@@ -1,19 +1,20 @@
-import herald.notifiers as notifiers
+from notifiers.gmail import GmailNotifier
 
 
 class Herald:
-    def __init__(self, notifier):
+    def __init__(self, notifier=GmailNotifier, message="Hear ye, hear ye!"):
         self.notifier = notifier
+        self.message = message
 
     def __enter__(self):
-        print("Oooh entered a context manager")
+        pass
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.notifier.notify()
+        self.notifier.notify(self.message)
         return False
 
 
-notifier = notifiers.GmailNotifier("I will now send a mail via GMAIL")
+notifier = GmailNotifier()
 
-with Herald(notifier) as herald:
+with Herald(notifier, message="Yay the process is now complete!") as herald:
     print("Loooong running process")
