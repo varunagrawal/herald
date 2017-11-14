@@ -6,3 +6,6 @@ __version__ = "1.0.0"
 __maintainer__ = "Varun Agrawal"
 __email__ = "varunagrawal@gatech.edu"
 __status__ = "Production"
+
+
+from . import herald
