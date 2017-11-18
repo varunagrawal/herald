@@ -2,13 +2,13 @@ class Notifier:
     def __init__(self, message):
         self.message = message
 
-    def notify(self, message=None):
+    def notify(self, *args, **kwargs):
         pass
 
 
 class TerminalNotifier(Notifier):
     def __init__(self, message):
-        super().__init__()
+        super().__init__(message)
         self.orig_message = message
 
     def notify(self, message=None):

@@ -1,5 +1,4 @@
-from . import notifiers
-from .notifiers.gmail import GmailNotifier
+from notifiers.gmail import GmailNotifier
 
 
 class Herald:
@@ -21,8 +20,8 @@ class Herald:
 
 
 if __name__ == "__main__":
-    notifier = GmailNotifier()
-    notifier = notifiers.TerminalNotifier()
+    notifier = GmailNotifier(message="This is a test message")
+    # notifier = notifiers.TerminalNotifier(message="This should print to the terminal")
 
     with Herald(notifier, message="Yay the process is now complete!") as herald:
         print("Loooong running process")

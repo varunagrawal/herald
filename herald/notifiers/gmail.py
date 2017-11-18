@@ -9,8 +9,8 @@ from oauth2client.file import Storage
 from email.mime.text import MIMEText
 
 class GmailNotifier(Notifier):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, message):
+        super().__init__(message)
         self.SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.compose']
         self.CLIENT_SECRET_FILE = 'client_secret.json'
         self.APPLICATION_NAME = 'Herald by Varun Agrawal'
