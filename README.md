@@ -62,7 +62,12 @@ If you find bugs, please feel free to submit an Issue, or even better, a Pull Re
 
 ### Development
 
-To set up your dev environment, clone _Herald_ and inside the root directory, open up a `pipenv shell` and run `pipenv install`. You should be good to go!
+To set up your dev environment, perform the following steps:
+ - Clone _Herald_
+ - Inside the root directory, run `pipenv shell` to open a shell.
+ - Finally run `pipenv install` to install all the dependencies.
+
+At this point, you should be good to go!
 
 ### Testing
 
