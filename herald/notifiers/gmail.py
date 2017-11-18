@@ -9,7 +9,7 @@ from oauth2client.file import Storage
 from email.mime.text import MIMEText
 
 class GmailNotifier(Notifier):
-    def __init__(self, message, subject="Herald Notification", cc=[]):
+    def __init__(self, message, subject="Herald Notification", cc=[], client_secret_file=None):
         super().__init__(message)
         self.message = message
         self.subject = subject
