@@ -9,8 +9,11 @@ from oauth2client.file import Storage
 from email.mime.text import MIMEText
 
 class GmailNotifier(Notifier):
-    def __init__(self, message):
+    def __init__(self, message, subject="Herald Notification", cc=[]):
         super().__init__(message)
+        self.message = message
+        self.subject = subject
+        self.cc = cc
         self.SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.compose']
         self.CLIENT_SECRET_FILE = 'client_secret.json'
         self.APPLICATION_NAME = 'Herald by Varun Agrawal'
@@ -37,19 +40,20 @@ class GmailNotifier(Notifier):
             self.credentials = tools.run_flow(flow, store, None)
             print('Storing credentials to ' + credential_path)
 
-    def notify(self, message, subject="Herald Notification", cc=[]):
-        print(message)
+    def notify(self, message=None):
+        if not message:
+            message = self.message
         http = self.credentials.authorize(httplib2.Http())
         service = discovery.build('gmail', 'v1', http=http)
 
         mail = MIMEText(message)
-        mail["subject"] = subject
+        mail["subject"] = self.subject
 
         try:
             user = service.users().getProfile(userId="me").execute()
             mail["to"] = user["emailAddress"]
             mail["from"] = user["emailAddress"]
-            mail["cc"] =",".join(cc)
+            mail["cc"] =",".join(self.cc)
 
             mail = {'raw': base64.urlsafe_b64encode(mail.as_string().encode()).decode()}
             message = service.users().messages().send(userId="me", body=mail).execute()
