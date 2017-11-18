@@ -8,4 +8,4 @@ __email__ = "varunagrawal@gatech.edu"
 __status__ = "Production"
 
 
-from . import herald
+from herald import *
