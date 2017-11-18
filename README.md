@@ -33,7 +33,7 @@ from herald import notifiers
 # Assumes your Gmail tokens have been set up properly
 notifier = notifiers.GmailNotifier()
 
-with Herald(notifier, message="Model Trained!") as herald:
+with Herald(notifier, message="Model Trained!"):
     # super long running process
     train_model()
     ...
