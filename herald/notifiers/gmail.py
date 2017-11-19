@@ -9,13 +9,23 @@ from oauth2client.file import Storage
 from email.mime.text import MIMEText
 
 class GmailNotifier(Notifier):
-    def __init__(self, message, subject="Herald Notification", cc=[], client_secret_file=None):
+    """
+    Herald notifier that uses GMail to send notifications
+    """
+    def __init__(self, message, subject="Herald Notification", cc=[], client_secret_file='client_secret.json'):
+        """
+
+        :param message: The default message to use in the notification.
+        :param subject: The subject line of the email that will be sent to GMail.
+        :param cc: List of emails to send the notification to as `cc`.
+        :param client_secret_file: The location of the secret file which has the GMail access tokens.
+        """
         super().__init__(message)
         self.message = message
         self.subject = subject
         self.cc = cc
         self.SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.compose']
-        self.CLIENT_SECRET_FILE = 'client_secret.json'
+        self.CLIENT_SECRET_FILE = client_secret_file
         self.APPLICATION_NAME = 'Herald by Varun Agrawal'
         self.get_credentials()
 
@@ -41,6 +51,11 @@ class GmailNotifier(Notifier):
             print('Storing credentials to ' + credential_path)
 
     def notify(self, message=None):
+        """
+        Send the notification.
+        :param message: The message string to use in the notification. If empty, the default message is used.
+        :return: None
+        """
         if not message:
             message = self.message
         http = self.credentials.authorize(httplib2.Http())

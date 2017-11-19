@@ -2,6 +2,9 @@ from .notifiers.gmail import GmailNotifier
 
 
 class Herald:
+    """
+    Herald context manager to send notifications
+    """
     def __init__(self, notifier=GmailNotifier, message="Hear ye, hear ye!"):
         self.notifier = notifier
         self.message = message
@@ -16,6 +19,11 @@ class Herald:
         return False
 
     def notify(self, message=None):
+        """
+        Send the notification.
+        :param message: The message to send in the notification.
+        :return: None
+        """
         if message:
             self.message = message
         self.notifier.notify(self.message)

@@ -1,5 +1,5 @@
 """
-Automatically send notifications at the end of a long running task
+Programmable, extensible and easy to use notification system
 """
 from setuptools import find_packages, setup
 from codecs import open
@@ -16,11 +16,11 @@ def read_md(f): return convert(f, 'rst')
 setup(
     name='herald',
     version=herald.__version__,
-    url='https://github.com/varunagrawal/nuke',
+    url='https://github.com/varunagrawal/herald',
     license=herald.__license__,
     author=herald.__author__,
     author_email=herald.__email__,
-    description='Command line tool to nuke a directory',
+    description='Programmable, extensible and easy to use notification system',
     long_description=read_md("README.md"),
     packages=find_packages(exclude=['tests']),
     include_package_data=True,
