@@ -19,7 +19,7 @@ Need to use it with a custom platform? You can easily write your own `notifier` 
 
 ## Installation
 
-The easy `pip install herald`.
+The easy `pip install herald-notify`.
 
 ## Usage
 

@@ -7,14 +7,14 @@ from os import path
 import herald
 from pypandoc import convert
 
-dependencies = []
+dependencies = ["google-api-python-client", "twilio", "oauth2client", "httplib2"]
 
 
 def read_md(f): return convert(f, 'rst')
 
 
 setup(
-    name='herald',
+    name='herald-notify',
     version=herald.__version__,
     url='https://github.com/varunagrawal/herald',
     license=herald.__license__,
@@ -27,6 +27,7 @@ setup(
     zip_safe=False,
     platforms='any',
     install_requires=dependencies,
+    keywords="herald, notification, notify, extensible",
     classifiers=[
         # As from http://pypi.python.org/pypi?%3Aaction=list_classifiers
         # 'Development Status :: 1 - Planning',
